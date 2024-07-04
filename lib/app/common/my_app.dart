@@ -1,3 +1,4 @@
+import 'package:devoida/app/modules/splash/bindings/splash_binding.dart';
 import 'package:devoida/app/resources/string_manager.dart';
 import 'package:devoida/app/resources/theme_manager.dart';
 import 'package:devoida/app/routes/app_pages.dart';
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       // routerDelegate: AppPages.goRoute.routerDelegate,
       title: AppStrings.devoida,
       initialRoute: AppPages.INITIAL,
-      // initialBinding: SplashBinding(),
+      initialBinding: SplashBinding(),
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       theme: getApplicationTheme(),

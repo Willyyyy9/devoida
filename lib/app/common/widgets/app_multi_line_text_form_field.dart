@@ -42,51 +42,89 @@ class _AppMultiLineTextFormFieldState extends State<AppMultiLineTextFormField> {
   Widget build(BuildContext context) {
     return Container(
       // width: 250,
-      height: widget.height ?? 30,
+      // height: widget.height ?? 50,
 
-      padding: const EdgeInsets.symmetric(horizontal: AppSize.s8),
       decoration: BoxDecoration(
-        // border: Border.all(
-        //   width: 1,
-        //   color: Colors.grey,
-        // ),
-
-        borderRadius: BorderRadius.circular(AppSize.s10),
+        color: ColorManager.transparent,
       ),
 
       child: TextFormField(
         keyboardType: TextInputType.multiline,
         controller: widget.controller,
         onFieldSubmitted: widget.onSubmited,
-        minLines: null,
+        minLines: 5,
         maxLines: null,
         validator: widget.validator ??
             (value) {
               if (value == null || value.isEmpty) {
-                return AppStrings.pleaseEnterValue;
+                return AppStrings.pleaseEnterValue + widget.hint;
               } else {
                 return null;
               }
             },
-        textAlignVertical: TextAlignVertical.top,
         inputFormatters: widget.inputFormatters,
         obscureText: widget.obscureText,
-        expands: true,
+        textCapitalization: TextCapitalization.sentences,
+        // expands: true,
         decoration: InputDecoration(
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: AppPadding.p16),
+            prefixIconColor: WidgetStateColor.resolveWith((states) =>
+                states.contains(WidgetState.focused)
+                    ? Colors.blue
+                    : Colors.black),
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                width: 1,
+                color: Colors.black,
+              ),
+              borderRadius: BorderRadius.circular(AppSize.s10),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                width: 1,
+                color: Colors.blue,
+              ),
+              borderRadius: BorderRadius.circular(AppSize.s10),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                width: 1,
+                color: Colors.red,
+              ),
+              borderRadius: BorderRadius.circular(AppSize.s10),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                width: 1,
+                color: Colors.red,
+              ),
+              borderRadius: BorderRadius.circular(AppSize.s10),
+            ),
             semanticCounterText: widget.hint,
             prefixIcon: widget.prefixIcon != null
-                ? Icon(
-                    widget.prefixIcon,
-                    size: AppSize.s16,
-                    color: ColorManager.primary,
+                ? Align(
+                    alignment: Alignment.topLeft,
+                    widthFactor: 1.0,
+                    heightFactor: 5.5,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: AppPadding.p16),
+                      child: Icon(
+                        widget.prefixIcon,
+                        size: AppSize.s16,
+                        // color: ColorManager.primary,
+                      ),
+                    ),
                   )
                 : null,
-            hintText: widget.hint,
+            labelText: widget.hint,
             hintStyle: getRegularStyle(
               color: ColorManager.darkPrimary,
               fontSize: widget.fontSize,
             ),
             alignLabelWithHint: true,
+            labelStyle: getRegularStyle(
+                color: ColorManager.black, fontSize: widget.fontSize),
             suffixIconConstraints: const BoxConstraints(maxHeight: AppSize.s16),
             suffixIcon: widget.suffixIcon != null
                 ? IconButton(

@@ -17,54 +17,59 @@ class TeamsWidget extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Container(
-          padding: const EdgeInsets.all(AppPadding.p16),
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: Colors.black,
+    return Obx(() => InkWell(
+          onTap: () {
+            Get.dialog(const TeamsDialog());
+          },
+          child: Container(
+            padding: const EdgeInsets.all(AppPadding.p16),
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1,
+                color: Colors.black,
+              ),
+              color: ColorManager.transparent,
+              borderRadius: BorderRadius.circular(AppSize.s10),
             ),
-            color: ColorManager.transparent,
-            borderRadius: BorderRadius.circular(AppSize.s10),
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                  child: controller.selectedTeams.isNotEmpty
-                      ? Wrap(
-                          children: [
-                            ...controller.selectedTeams.map(
-                              (team) {
-                                return TeamItem(team);
-                              },
-                            ).toList()
-                          ],
-                        )
-                      : Row(
-                          children: [
-                            const Icon(
-                              FontAwesomeIcons.users,
-                              size: AppSize.s16,
-                            ),
-                            const Gap(AppSize.s16),
-                            AutoSizeText(
-                              AppStrings.chooseYourTeams,
-                              style: getRegularStyle(
-                                  color: ColorManager.grey,
-                                  fontSize: FontSize.s12),
-                            ),
-                          ],
-                        )),
-              GestureDetector(
-                onTap: () {
-                  Get.dialog(const TeamsDialog());
-                },
-                child: const Icon(
-                  FontAwesomeIcons.plus,
-                  size: AppSize.s16,
-                ),
-              )
-            ],
+            child: Row(
+              children: [
+                Expanded(
+                    child: controller.selectedTeams.isNotEmpty
+                        ? Wrap(
+                            children: [
+                              ...controller.selectedTeams.map(
+                                (team) {
+                                  return TeamItem(team);
+                                },
+                              ).toList()
+                            ],
+                          )
+                        : Row(
+                            children: [
+                              const Icon(
+                                FontAwesomeIcons.users,
+                                size: AppSize.s16,
+                              ),
+                              const Gap(AppSize.s16),
+                              AutoSizeText(
+                                AppStrings.chooseYourTeams,
+                                style: getRegularStyle(
+                                    color: ColorManager.grey,
+                                    fontSize: FontSize.s12),
+                              ),
+                            ],
+                          )),
+                GestureDetector(
+                  onTap: () {
+                    Get.dialog(const TeamsDialog());
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.plus,
+                    size: AppSize.s16,
+                  ),
+                )
+              ],
+            ),
           ),
         ));
   }

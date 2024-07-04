@@ -2,14 +2,14 @@ name: devoida
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=3.2.3 <4.0.0'
+environment:
+  sdk: ">=3.2.3 <4.0.0"
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
   get_cli: 1.8.1
   get: 4.6.6
-  flutter: 
+  flutter:
     sdk: flutter
   flutter_easyloading: ^3.0.5
   font_awesome_flutter: ^10.7.0
@@ -26,11 +26,24 @@ dependencies:
   cloud_firestore: ^5.0.2
   firebase_storage: ^12.1.0
   intl: ^0.19.0
+  uuid: ^4.4.0
+  omni_datetime_picker: ^2.0.2
+  fl_chart: ^0.68.0
+  gantt_chart: ^0.3.0
+  mailer: ^6.1.0
+  dio: ^5.5.0
 
-dev_dependencies: 
+dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.0
-  flutter_test: 
+  flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/devoidalogo.png"
+  min_sdk_android: 23
 
 flutter:
   uses-material-design: true
@@ -52,4 +65,3 @@ flutter:
           weight: 400
         - asset: assets/fonts/poppins-light.ttf
           weight: 300
-

@@ -1,12 +1,9 @@
-import 'dart:async';
-
 import 'package:devoida/app/resources/asset_manager.dart';
 import 'package:devoida/app/resources/string_manager.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {
   int contentIndex = 0;
-  Timer? _timer;
   List<String> titles = [
     AppStrings.onBoardingTitleOne,
     AppStrings.onBoardingTitleTwo,

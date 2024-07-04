@@ -54,8 +54,12 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       decoration: BoxDecoration(
         color: ColorManager.transparent,
       ),
+
       child: TextFormField(
-        autofillHints: const [AutofillHints.email],
+        textCapitalization: widget.keyboardType == TextInputType.name
+            ? TextCapitalization.words
+            : TextCapitalization.sentences,
+        autofillHints: widget.autofillHints,
         onChanged: widget.onChanged,
         controller: widget.controller,
         onFieldSubmitted: widget.onSubmited,
@@ -63,7 +67,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         validator: widget.validator ??
             (value) {
               if (value == null || value.isEmpty) {
-                return AppStrings.pleaseEnterValue;
+                return AppStrings.pleaseEnterValue + widget.hint;
               } else {
                 return null;
               }
@@ -112,10 +116,12 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                     // color: ColorManager.black,
                   )
                 : null,
-            contentPadding: const EdgeInsets.symmetric(vertical: 15),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            alignLabelWithHint: true,
             labelStyle: getRegularStyle(
-                color: ColorManager.black, fontSize: FontSize.s16),
-            hintText: widget.hint,
+                color: ColorManager.black, fontSize: widget.fontSize),
+            labelText: widget.hint,
             hintStyle: getRegularStyle(
                 color: ColorManager.grey, fontSize: widget.fontSize),
             suffixIconConstraints: const BoxConstraints(maxHeight: AppSize.s16),

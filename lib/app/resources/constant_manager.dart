@@ -1,5 +1,6 @@
 import 'package:devoida/app/resources/color_manager.dart';
 import 'package:devoida/app/resources/font_manager.dart';
+import 'package:devoida/app/resources/string_manager.dart';
 import 'package:devoida/app/resources/style_manager.dart';
 import 'package:devoida/app/resources/value_manager.dart';
 import 'package:flutter/material.dart';
@@ -45,4 +46,23 @@ class AppConstants {
     "Operations",
     "Customer Success",
   ];
+  static List<String> projectStatuses = [
+    AttributeString.statusNew,
+    AttributeString.statusInProgress,
+    AttributeString.statusCompleted,
+  ];
+
+  static Map<String, Color> projectTeamColors = {
+    "Software": const Color(0xff4A90E2),
+    "Sales": const Color(0xffF5A623),
+    "Marketing": const Color(0xff306BF3),
+    "Operations": const Color(0xffD0021B),
+    "Customer Success": const Color(0xff7ED321),
+  };
+
+  static Map<String, Color> projectStatusColors = {
+    AttributeString.statusNew: const Color(0xff5BC0EB),
+    AttributeString.statusInProgress: const Color(0xffFDE74C),
+    AttributeString.statusCompleted: const Color(0xff9BC53D),
+  };
 }
